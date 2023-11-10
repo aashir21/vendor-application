@@ -31,13 +31,7 @@ namespace Vendor_App.Views
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            ReviewController.AddNewReview(int.Parse(textBox1.Text), int.Parse(textBox2.Text), int.Parse(textBox3.Text), textBox4.Text, int.Parse(textBox5.Text));
-        }
-
-        private void button2_Click(object sender, EventArgs e)  //get all reviews from review table
-        {
-            ReviewController.GetAllReviews();
-
+            ReviewController.AddNewReview( int.Parse(textBox2.Text), int.Parse(textBox3.Text), textBox4.Text, int.Parse(textBox5.Text));
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -55,6 +49,23 @@ namespace Vendor_App.Views
         private void button4_Click(object sender, EventArgs e)
         {
             ReviewController.DeleteReview(int.Parse(textBox1.Text));
+        }
+
+        private void button2_Click(object sender, EventArgs e)  //get all reviews from review table
+        {
+            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Admin\\Downloads\\vendor-application-main\\vendor-application-main\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from Review", conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
