@@ -14,7 +14,7 @@ namespace Vendor_App.Controllers
     internal class ReviewController
     {
         Review review = new Review();
-        public static void AddNewReview(int userid, int productid, string reviewtext, int rating)
+        public static void AddNewReview(int userid, int productid, string reviewtext, int rating) // add new review in the review table
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Vendor_App.Controllers
                 MessageBox.Show(ex.Message);
             }
         }
-        public static void DeleteReview(int reviewId) 
+        public static void DeleteReview(int reviewId) // delete review in the review table by passing reviewid 
         {
             try
             {
@@ -53,7 +53,7 @@ namespace Vendor_App.Controllers
 
         }
 
-        public static void UpdateReview(int reviewid,int userid, int productid, string reviewtext, int rating)
+        public static void UpdateReview(int reviewid,int userid, int productid, string reviewtext, int rating) // update review in the review table
         {
             try
             {
@@ -74,11 +74,6 @@ namespace Vendor_App.Controllers
                 MessageBox.Show(ex.Message);
             }
             
-        }
-
-        public int GetReviewById(int id)
-        {
-            return review.ReviewID;
         }
 
         

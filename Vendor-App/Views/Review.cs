@@ -14,7 +14,7 @@ using Vendor_App.Models;
 
 namespace Vendor_App.Views
 {
-    public partial class Review : Form
+    public partial class Review : Form 
     {
         public Review()
         {
@@ -66,6 +66,13 @@ namespace Vendor_App.Views
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Form1 form = new Form1();
+            this.Hide();
+            form.Show();
         }
     }
 }
