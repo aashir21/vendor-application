@@ -127,8 +127,9 @@ namespace Vendor_App.Views
         // Search by ID button.
         private void button5_Click(object sender, EventArgs e)
         {
-           ProductController.SearchByID(int.Parse(textBox1.Text));
+            
 
+            ProductController.SearchByID(int.Parse(textBox1.Text));
         }
 
         // Search by Name button.
