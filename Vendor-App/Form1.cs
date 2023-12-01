@@ -29,9 +29,6 @@ namespace Vendor_App
 
         private void button3_Click(object sender, EventArgs e)  //client btn
         {
-            Client client = new Client();
-            client.Show(this);
-            this.Hide();
 
 
         }
