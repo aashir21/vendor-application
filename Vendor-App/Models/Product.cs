@@ -16,6 +16,7 @@ namespace Vendor_App.Models
         public string TypeOfSoftware {  get; set; }
         public string Description { get; set; }
 
+        // Product constructor with parameters.
         public Product(int productID, int companyID, string softwareName, string typeOfSoftware, string description)
         {
             ProductID = productID;

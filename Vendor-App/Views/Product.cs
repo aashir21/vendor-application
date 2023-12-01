@@ -16,6 +16,7 @@ namespace Vendor_App.Views
 {
     public partial class Product : Form
     {
+        // Setup of visual components.
         public Product()
         {
             InitializeComponent();
@@ -98,8 +99,10 @@ namespace Vendor_App.Views
         //Update Button
         private void button3_Click(object sender, EventArgs e)
         {
+            // Try and Catch is used to handle any errors that might occur in the code block below.
             try
             {
+                // Update Product method in Product Controller is called here and the method that is in it, to be executed.
 
                 ProductController.UpdateProduct(int.Parse(textBox1.Text),int.Parse(textBox2.Text), textBox3.Text, textBox4.Text, textBox5.Text);
             }
@@ -113,8 +116,12 @@ namespace Vendor_App.Views
         // Delete Button.
         private void button4_Click(object sender, EventArgs e)
         {
+            // Try and Catch is used to handle any errors that might occur in the code block below.
+
             try
             {
+                // Calls DeletectProduct method of the ProductController.
+
                 ProductController.DeleteProduct(int.Parse(textBox1.Text));
             }
             
@@ -144,6 +151,8 @@ namespace Vendor_App.Views
             SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\musta\\Source\\Repos\\vendor-application\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
 
             conn.Open();
+
+            // To display all product record.
 
             SqlCommand cmd = new SqlCommand("Select * from Product", conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
