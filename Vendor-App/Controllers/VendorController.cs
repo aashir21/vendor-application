@@ -44,6 +44,13 @@ namespace Vendor_App.Controllers
                     return;
                 }
 
+                if(establishedAt.Length < 3 || website.Length < 3) {
+
+                    MessageBox.Show("Established At & Website are a required field");
+                    return;
+
+                }
+
 
 
                 Models.Vendor vendor = new Models.Vendor();
@@ -63,7 +70,7 @@ namespace Vendor_App.Controllers
                 conn.Close();
 
                 MessageBox.Show("Vendor Added!");
-
+                
 
             }
             catch (Exception ex) { 
