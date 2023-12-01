@@ -74,5 +74,18 @@ namespace Vendor_App.Views
             this.Hide();
             form.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Admin\\Downloads\\vendor-application-main\\vendor-application-main\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from Review Where ProductID=@ProductID", conn);
+            cmd.Parameters.AddWithValue("ProductID", int.Parse(textBox3.Text));
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+        }
     }
 }

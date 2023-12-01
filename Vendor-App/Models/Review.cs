@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Vendor_App.Models
 {
-    internal class Review
+    public class Review
     {
+        
+
+   
+
         public int ReviewID { get; set; }
         public int UserID { get; set; }
         public int ProductID { get; set; }
@@ -15,4 +19,8 @@ namespace Vendor_App.Models
         public int Rating { get; set; } // rating is out 5
 
     }
+
+    
+
+
 }

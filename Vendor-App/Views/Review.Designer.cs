@@ -44,6 +44,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,11 +166,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(203, 288);
+            this.dataGridView1.Location = new System.Drawing.Point(191, 279);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(393, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(488, 150);
             this.dataGridView1.TabIndex = 16;
             // 
             // textBox1
@@ -188,11 +190,22 @@
             this.label1.Text = "ReviewID";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(611, 231);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(159, 42);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "Get Review By Product Id";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Review
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -209,6 +222,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.Name = "Review";
             this.Text = "Review";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -234,5 +248,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button button6;
     }
 }

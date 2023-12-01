@@ -21,9 +21,12 @@ namespace Vendor_App.Controllers
                 SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Admin\\Downloads\\vendor-application-main\\vendor-application-main\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Insert into [Review] values (@UserID,@ProductID,@ReviewText,@Rating)", conn);
+
+
+
                 cmd.Parameters.AddWithValue("UserID", userid);
                 cmd.Parameters.AddWithValue("ProductID", productid);
-                cmd.Parameters.AddWithValue("ReviewText", reviewtext);
+                cmd.Parameters.AddWithValue("ReviewText",reviewtext);
                 cmd.Parameters.AddWithValue("Rating", rating);
 
                 cmd.ExecuteNonQuery();
