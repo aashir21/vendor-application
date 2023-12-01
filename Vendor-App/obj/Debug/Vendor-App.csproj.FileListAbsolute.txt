@@ -1,15 +1,49 @@
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor-App.csproj.AssemblyReference.cache
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor_App.Form1.resources
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor_App.Properties.Resources.resources
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor-App.csproj.GenerateResource.cache
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor-App.csproj.CoreCompileInputs.cache
-D:\Vendor-App\Vendor-App\bin\Debug\Vendor.mdf
-D:\Vendor-App\Vendor-App\bin\Debug\Vendor_log.ldf
-D:\Vendor-App\Vendor-App\bin\Debug\Vendor-App.exe.config
-D:\Vendor-App\Vendor-App\bin\Debug\Vendor-App.exe
-D:\Vendor-App\Vendor-App\bin\Debug\Vendor-App.pdb
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor-App.exe
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor-App.pdb
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor_App.Views.Product.resources
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor_App.Views.Review.resources
-D:\Vendor-App\Vendor-App\obj\Debug\Vendor_App.Views.Client.resources
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor-App.csproj.AssemblyReference.cache
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor_App.Form1.resources
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor_App.Properties.Resources.resources
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor-App.csproj.GenerateResource.cache
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor-App.csproj.CoreCompileInputs.cache
+D:/Vendor-App/Vendor-App/bin/Debug/Vendor.mdf
+D:/Vendor-App/Vendor-App/bin/Debug/Vendor_log.ldf
+D:/Vendor-App/Vendor-App/bin/Debug/Vendor-App.exe.config
+D:/Vendor-App/Vendor-App/bin/Debug/Vendor-App.exe
+D:/Vendor-App/Vendor-App/bin/Debug/Vendor-App.pdb
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor-App.exe
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor-App.pdb
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor_App.Views.Product.resources
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor_App.Views.Review.resources
+D:/Vendor-App/Vendor-App/obj/Debug/Vendor_App.Views.Client.resources
+/Users/zaryab/Downloads/Development/Vendor-App/bin/Debug/Vendor.mdf
+/Users/zaryab/Downloads/Development/Vendor-App/bin/Debug/Vendor_log.ldf
+/Users/zaryab/Downloads/Development/Vendor-App/bin/Debug/Vendor-App.exe.config
+/Users/zaryab/Downloads/Development/Vendor-App/bin/Debug/Vendor-App.exe
+/Users/zaryab/Downloads/Development/Vendor-App/bin/Debug/Vendor-App.pdb
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor-App.csproj.AssemblyReference.cache
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor_App.Form1.resources
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor_App.Properties.Resources.resources
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor_App.Views.Client.resources
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor_App.Views.Product.resources
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor_App.Views.Review.resources
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor_App.Views.Update.resources
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor-App.csproj.GenerateResource.cache
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor-App.csproj.CoreCompileInputs.cache
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor-App.exe
+/Users/zaryab/Downloads/Development/Vendor-App/obj/Debug/Vendor-App.pdb
+H:\My Documents\Development\Vendor-App\bin\Debug\Vendor.mdf
+H:\My Documents\Development\Vendor-App\bin\Debug\Vendor_log.ldf
+H:\My Documents\Development\Vendor-App\bin\Debug\Vendor-App.exe.config
+H:\My Documents\Development\Vendor-App\bin\Debug\Vendor-App.exe
+H:\My Documents\Development\Vendor-App\bin\Debug\Vendor-App.pdb
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor-App.csproj.AssemblyReference.cache
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor-App.csproj.SuggestedBindingRedirects.cache
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Form1.resources
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Properties.Resources.resources
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Views.Client.resources
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Views.Product.resources
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Views.Review.resources
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor-App.csproj.GenerateResource.cache
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor-App.csproj.CoreCompileInputs.cache
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor-App.exe
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor-App.pdb
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Views.UpdateClientForm.resources
+H:\My Documents\Development\Vendor-App\obj\Debug\Vendor_App.Views.DeleteClientForm.resources

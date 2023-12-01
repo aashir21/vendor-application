@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vendor_App.Controllers;
 using Vendor_App.Views;
 
 namespace Vendor_App
@@ -45,6 +46,18 @@ namespace Vendor_App
         private void button1_Click(object sender, EventArgs e)  //exit btn
         {
             Application.Exit();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DataTable notifications = NotificationController.ViewAllNotifications();
+            dataGridView1.DataSource = notifications;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+           
         }
     }
 }
