@@ -73,7 +73,7 @@
             this.textBox1.Location = new System.Drawing.Point(257, 167);
             this.textBox1.MinimumSize = new System.Drawing.Size(250, 35);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(262, 35);
+            this.textBox1.Size = new System.Drawing.Size(262, 22);
             this.textBox1.TabIndex = 3;
             // 
             // label3
@@ -106,6 +106,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -115,6 +116,7 @@
             this.button4.TabIndex = 8;
             this.button4.Text = "Search";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Settings
             // 

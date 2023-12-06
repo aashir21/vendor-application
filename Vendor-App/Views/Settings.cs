@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vendor_App.Controllers;
 
 namespace Vendor_App.Views
 {
@@ -20,12 +21,7 @@ namespace Vendor_App.Views
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\aashi\\OneDrive\\Desktop\\vendor-application-user\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from dbo.[User]", conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+           
             
         }
 
@@ -38,7 +34,17 @@ namespace Vendor_App.Views
 
         private void button2_Click(object sender, EventArgs e)
         {
+            UserController.ChangeAccessRights(int.Parse(textBox1.Text));
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UserController.DeleteUser(int.Parse(textBox1.Text));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UserController.SearchUser(int.Parse(textBox1.Text));
         }
     }
 }

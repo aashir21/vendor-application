@@ -171,20 +171,43 @@ namespace Vendor_App.Controllers
         {
             try
             {
-                SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\aashi\\OneDrive\\Desktop\\vendor-application-user\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
+                try
+                {
+                    SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\aashi\\OneDrive\\Desktop\\vendor-application-user\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
 
-                conn.Open();
+                    con.Open();
 
-                SqlCommand deleteQuery = new SqlCommand("DELETE Vendor WHERE VendorID=@VendorID", conn);
+                    SqlCommand searchQuery = new SqlCommand("SELECT * FROM dbo.[Vendor] WHERE VendorID = @VendorID", con);
+                    searchQuery.Parameters.AddWithValue("@VendorID", vendorID);
 
-                deleteQuery.Parameters.AddWithValue("VendorID", vendorID);
+                    using (SqlDataReader reader = searchQuery.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[Vendor] WHERE VendorID=@VendorID", con);
 
-                deleteQuery.ExecuteNonQuery();
+                            deleteQuery.Parameters.AddWithValue("VendorID", vendorID);
 
-                conn.Close();
+                            reader.Close();
+                            deleteQuery.ExecuteNonQuery();
 
-                MessageBox.Show("Vendor Deleted!");
-            }catch(Exception ex)
+
+                            MessageBox.Show("Vendor deleted from system");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vendor not found");
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong");
+                }
+
+
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show("Something went wrong: " + ex.Message);
             }
