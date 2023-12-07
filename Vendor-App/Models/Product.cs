@@ -13,7 +13,7 @@ namespace Vendor_App.Models
         public int CompanyID { get; set; }
         public string SoftwareName { get; set; }
 
-        public string TypeOfString {  get; set; }
+        public string TypeOfSoftware {  get; set; }
         public string Description { get; set; }
 
     }

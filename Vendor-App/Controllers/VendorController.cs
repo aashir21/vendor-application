@@ -69,6 +69,8 @@ namespace Vendor_App.Controllers
 
                 conn.Close();
 
+
+                NotificationController.CreateNotification($"{vendor.Name} was added as a vendor", DateTime.Now);
                 MessageBox.Show("Vendor Added!");
                 
 
@@ -156,10 +158,12 @@ namespace Vendor_App.Controllers
 
 
                 searchQuery.ExecuteNonQuery();
-                conn.Close();
+
 
                 MessageBox.Show("Vendor Updated!");
+                NotificationController.CreateNotification($"{VendorID} vendor was updated", DateTime.Now);
 
+                conn.Close();
             }
             catch(Exception ex)
             {

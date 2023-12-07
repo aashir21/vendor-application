@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vendor_App.Controllers;
 using Vendor_App.Utility;
 using Vendor_App.Views;
 
@@ -81,8 +82,19 @@ namespace Vendor_App
                 }
 
             }
-            
+
+            DataTable notifications = NotificationController.ViewAllNotifications();
+
+
+            dataGridView1.DataSource = notifications;
+            for(int i = 0; i < notifications.Columns.Count; i++)
+            {
+                dataGridView1.Columns[i].Width = 200;
+            }
+
+            dataGridView1.Columns[0].HeaderText = "Notification";
            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -152,6 +164,21 @@ namespace Vendor_App
                 conn.Close();
 
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            
         }
     }
 }
