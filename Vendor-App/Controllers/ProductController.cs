@@ -1,8 +1,15 @@
-﻿using System;
+﻿/*
+ * CreateProduct - Method to add product details by its Comapny ID, Software Name, Type of Software and its description.
+ * UpdateProduct - Method to update product with parameters ProductID, CompanyID, SoftwareName , TypeOf Software and Description.
+ * DeleteProduct - Method to delete product with ProductID as parameters.
+ */
+
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +25,8 @@ namespace Vendor_App.Controllers
         Models.Product product = new Models.Product();
 
         /*
-         * Method to add product details by its Comapny ID, Software NAme, Type of Software and its description.
-         * Parameters are CompanyID, SfotwareName, TypeOfSoftware and Description.
+         * Method to add product details by its Comapny ID, Software Name, Type of Software and its description.
+         * Parameters are CompanyID, SoftwareName, TypeOfSoftware and Description.
          */
         public static void CreateProduct(int CompanyID, string SoftwareName, string TypeOfSoftware, string Description)
         {
@@ -130,23 +137,42 @@ namespace Vendor_App.Controllers
 
                 conn.Open();
 
-                //SQL query to delete product.
+                SqlCommand cmd = new SqlCommand("SELECT * FROM [Product] WHERE ProductID=@ProductID", conn);
 
-                SqlCommand cmd = new SqlCommand("Delete Product WHERE ProductID=@ProductID", conn);
+                cmd.Parameters.AddWithValue("ProductID", ProductID);
 
-                cmd.Parameters.AddWithValue("@ProductID", ProductID);
+               
 
-                // SQL method used when query doesn't show any results. Best for the UPDATE purpose.
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        //SQL query to delete product with Product ID as parameters.
 
-                cmd.ExecuteNonQuery();
+                        SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[Product] WHERE ProductID=@ProductID", conn);
+
+
+                        deleteQuery.Parameters.AddWithValue("@ProductID", ProductID);
+
+                        reader.Close();
+                        deleteQuery.ExecuteNonQuery();
+
+                        MessageBox.Show("Product Deleted from system");
+
+                        // SQL method used when query doesn't show any results. Best for the UPDATE purpose.
+
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Display message in pop-up window.
+                        MessageBox.Show("Product Not Found");
+                    }
+                }
 
                 // Close connection.
                 
                 conn.Close();
-
-                // Display message in pop-up window.
-
-                MessageBox.Show("Product Deleted.");
             }
 
             catch(Exception e)
@@ -177,6 +203,7 @@ namespace Vendor_App.Controllers
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Product WHERE ProductID=@ProductID", conn);
 
                 cmd.Parameters.AddWithValue("@ProductID", ProductID);
+
 
                 cmd.ExecuteNonQuery();
 
