@@ -37,8 +37,6 @@ C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\bin\Debug\Ven
 C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor-App.csproj.AssemblyReference.cache
 C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Form1.resources
 C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Properties.Resources.resources
-C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Views.Client.resources
-C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Views.Dummy.resources
 C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Views.Login.resources
 C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Views.Product.resources
 C:\Users\aashi\OneDrive\Desktop\vendor-application-user\Vendor-App\obj\Debug\Vendor_App.Views.Review.resources

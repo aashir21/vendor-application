@@ -19,12 +19,7 @@ namespace Vendor_App.Views
             InitializeComponent();
         }
 
-        private void Settings_Load(object sender, EventArgs e)
-        {
-           
-            
-        }
-
+        //Return to home page btn
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 form = new Form1();
@@ -32,16 +27,23 @@ namespace Vendor_App.Views
             this.Hide();
         }
 
+
+        //Btn to handle change access rights
         private void button2_Click(object sender, EventArgs e)
         {
+
+            //Change Acess Rights functions called from User Controller
             UserController.ChangeAccessRights(int.Parse(textBox1.Text));
         }
 
+        //Delete user btn
         private void button3_Click(object sender, EventArgs e)
         {
+
             UserController.DeleteUser(int.Parse(textBox1.Text));
         }
 
+        //Search User Info btn
         private void button4_Click(object sender, EventArgs e)
         {
             UserController.SearchUser(int.Parse(textBox1.Text));

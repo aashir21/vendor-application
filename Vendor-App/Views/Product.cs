@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Vendor_App.Controllers;
+using Vendor_App.Utility;
 
 namespace Vendor_App.Views
 {
@@ -28,22 +29,8 @@ namespace Vendor_App.Views
             this.Hide();
         }
 
-        private void Product_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        //Return to home page button
         private void button8_Click(object sender, EventArgs e)
         {
             Form1 home = new Form1();
@@ -130,6 +117,32 @@ namespace Vendor_App.Views
             da.Fill(dt);
             dataGridView2.DataSource = dt;
             conn.Close();
+        }
+
+        private void Product_Load(object sender, EventArgs e)
+        {
+            if (Vault.CurrentUser != null)
+            {
+
+                var role = Vault.CurrentUser.Role.ToString();
+
+                if (role.Trim() == "ADMIN")
+                {
+
+                    //only users with the role "ADMIN" will have access to edit or delete a vendor
+
+                    button11.Enabled = true;
+                    button10.Enabled = true;
+                    this.Refresh();
+                }
+                else
+                {
+                    button11.Enabled = false;
+                    button10.Enabled = false;
+                    this.Refresh();
+                }
+
+            }
         }
     }
 }

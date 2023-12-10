@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Vendor_App.Controllers;
+using Vendor_App.Models;
 using Vendor_App.Utility;
 using Vendor_App.Views;
 
@@ -23,36 +24,27 @@ namespace Vendor_App
             InitializeComponent();
         }
 
-        private void button1_Click_1(object sender, EventArgs e) //product btn
+        private void button1_Click_1(object sender, EventArgs e) //show Product page
         {
-            Product product = new Product();
+            Views.Product product = new Views.Product();
             product.Show(this);
             this.Hide();
         }
 
 
-        private void button3_Click(object sender, EventArgs e)  //client btn
+        private void button2_Click(object sender, EventArgs e) //show Review page
         {
-            Client client = new Client();
-            client.Show(this);
-            this.Hide();
-
-
-        }
-
-        private void button2_Click(object sender, EventArgs e) //review btn
-        {
-            Review review = new Review();
+            Views.Review review = new Views.Review();
             review.Show(this);
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)  //exit btn
+        private void button1_Click(object sender, EventArgs e)  //Stop the application -- Logout btn
         {
             Application.Exit();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)  //Open Admin Settings panel
         {
             Settings settings = new Settings();
             settings.Show(this);
@@ -62,82 +54,93 @@ namespace Vendor_App
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            //Upon home page load, perform these actions
+
+            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\aashi\\OneDrive\\Desktop\\vendor-application-user\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30");
+
+            conn.Open();
+
             
-            if(Vault.CurrentUser != null)
+            // Selecting names of vendors
+            SqlCommand cmd = new SqlCommand("Select Name from Vendor", conn);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
 
-                label1.Text = $"Hello, {Vault.CurrentUser.Username}";
+                while (reader.Read())
+                {
 
-                var role = Vault.CurrentUser.Role.ToString();
+                    comboBox1.Items.Add(reader["Name"].ToString()); //Populating the combo box
+                    
+                }
+
+                reader.Close();
                 
-                if(role.Trim() == "ADMIN")
-                {
-                    button4.Enabled = true;
-                    this.Refresh();
-                }
-                else
-                {
-                    button4.Enabled=false;
-                    this.Refresh();
-                }
-
+                //Refreshing combo box to display all vendors from db
+                comboBox1.Refresh();    
             }
 
-            DataTable notifications = NotificationController.ViewAllNotifications();
+
+                if (Vault.CurrentUser != null)
+                {
+
+                    label1.Text = $"Hello, {Vault.CurrentUser.Username}"; //dynamically setting user name on home page
+
+                    var role = Vault.CurrentUser.Role.ToString();
+
+                    if (role.Trim() == "ADMIN") //checking access rights
+                    {
+                        button4.Enabled = true; //if "ADMIN" , enable btn 
+                        this.Refresh();
+                    }
+                    else
+                    {
+                        button4.Enabled = false; //if not ADMIN, disable btn
+                        this.Refresh();
+                    }
+
+                    conn.Close(); //closing connection
+
+                }
+
+            DataTable notifications = NotificationController.ViewAllNotifications(); //populating data table with notifications
 
 
             dataGridView1.DataSource = notifications;
-            for(int i = 0; i < notifications.Columns.Count; i++)
+            for(int i = 0; i < dataGridView1.Columns.Count; i++)
             {
-                dataGridView1.Columns[i].Width = 200;
+                dataGridView1.Columns[i].Width = 200; //setting width of every column in data table
             }
 
-            dataGridView1.Columns[0].HeaderText = "Notification";
+            dataGridView1.Columns[0].HeaderText = "Notification"; //renaming the column name of the frontend
            
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
-
+        //Show Vendors Page
         private void button5_Click(object sender, EventArgs e)
         {
-            Vendor vendor = new Vendor();
+            Views.Vendor vendor = new Views.Vendor();
             vendor.Show();
             this.Hide();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        
+        //Setting up file upload operations
+        private void button6_Click_1(object sender, EventArgs e)  
         {
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void button6_Click_1(object sender, EventArgs e)  //uploading a file btn
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog(); //configuring file properties
             openFileDialog.Title = "Select a file to upload";
-            openFileDialog.Filter = "All files (*.*)|*.*"; // You can filter for specific file types
+            openFileDialog.Filter = "All files (*.*)|*.*"; 
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Get the path of specified file
-                string filePath = openFileDialog.FileName;
+                
+                string filePath = openFileDialog.FileName; //storing file name
 
-                // Read the contents of the file into a stream
-                byte[] fileData;
+                
+                byte[] fileData; //initialising array to store file data
                 using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
                 {
                     using (BinaryReader br = new BinaryReader(fs))
@@ -146,39 +149,41 @@ namespace Vendor_App
                     }
                 }
 
+                //Opening connection
                SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\aashi\\OneDrive\\Desktop\\vendor-application-user\\Vendor-App\\Vendor.mdf;Integrated Security=True;Connect Timeout=30"); 
                conn.Open();
 
+                int vendorId = 0;
+                SqlCommand searchVendorQuery = new SqlCommand("Select VendorID FROM dbo.[Vendor] WHERE Name=@Name", conn);
+
+                //Searching db
+                searchVendorQuery.Parameters.AddWithValue("@Name", comboBox1.Text);
+
+                object result = searchVendorQuery.ExecuteScalar();
+                if (result != null)
+                {
+                    vendorId = Convert.ToInt32(result); //getting vendor id that was mapped to the name
+                }
+
+
+                //storing the file against the fetched vendor ID as foreign key
                 string sql = "INSERT INTO dbo.[File](FileName, FileData, VendorID) VALUES (@FileName, @FileData, @VendorID)";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@FileName", Path.GetFileName(filePath));
                     cmd.Parameters.AddWithValue("@FileData", fileData);
-                    cmd.Parameters.AddWithValue("@VendorID", int.Parse(textBox1.Text));
+                    cmd.Parameters.AddWithValue("VendorID", vendorId);
 
                     cmd.ExecuteNonQuery();
                 }
 
                 MessageBox.Show("File uploaded successfully!");
 
-                conn.Close();
+                conn.Close(); //closing connection
 
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button3_Click_2(object sender, EventArgs e)
-        {
-            
-        }
+        
     }
 }

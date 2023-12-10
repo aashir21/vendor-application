@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+
+using System;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vendor_App.Models;
-using Vendor_App.Views;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+
 
 namespace Vendor_App.Controllers
 {
@@ -38,7 +33,7 @@ namespace Vendor_App.Controllers
 
                 SqlCommand insertCommand = new SqlCommand("INSERT INTO dbo.[Vendor] (Name, EstablishedAt, CompanyWebsite) VALUES (@Name, @EstablishedAt, @CompanyWebsite)", conn);
 
-                if (name.Length < 3)
+                if (name.Length < 3)  //validating that vendor name should be atleast 3 chars
                 {
                     MessageBox.Show("Vendor name should be atleast 3 characters");
                     return;
@@ -53,12 +48,15 @@ namespace Vendor_App.Controllers
 
 
 
-                Models.Vendor vendor = new Models.Vendor();
+                Models.Vendor vendor = new Models.Vendor(); //creating model object to make full use of MVC model
 
                 vendor.Name = name;
                 vendor.EstablishedAt = establishedAt;
                 vendor.CompanyWebsite = website;
 
+                //choosing only name, establishedat, website as cumpolsory choice, 
+                // as a vendor may not have all the required fields at time of creation
+                //Vendors can be edited later at any point, through EditVendor form 
 
                 insertCommand.Parameters.AddWithValue("@Name", vendor.Name);
                 insertCommand.Parameters.AddWithValue("@EstablishedAt", vendor.EstablishedAt);
@@ -69,7 +67,7 @@ namespace Vendor_App.Controllers
 
                 conn.Close();
 
-
+                //Calling notification controller method once new vendor is added
                 NotificationController.CreateNotification($"{vendor.Name} was added as a vendor", DateTime.Now);
                 MessageBox.Show("Vendor Added!");
                 
@@ -91,6 +89,7 @@ namespace Vendor_App.Controllers
 
                 conn.Open();
 
+                //query to check if user is present in table
                 SqlCommand searchQuery = new SqlCommand("SELECT * FROM dbo.[Vendor] WHERE VendorID = @VendorID", conn);
                 searchQuery.Parameters.AddWithValue("@VendorID", VendorID);
 
@@ -98,13 +97,15 @@ namespace Vendor_App.Controllers
                 {
                     if (reader.Read())
                     {
-                        string[] Vendor = new string[11];
+                        string[] Vendor = new string[11];  //creating a vendor array to store columns fields.
 
                         for(int i=0; i<reader.FieldCount; i++)
                         {
-                            Vendor[i] = reader[i].ToString();
+                            Vendor[i] = reader[i].ToString(); //populating array with fields
                         }
 
+
+                        //displaying vendor details
                         MessageBox.Show($"Vendor Details for: {Vendor[1]} \n\n" +
                             $"Vendor ID : {Vendor[0]} \n" +
                             $"Name: {Vendor[1]} \n" +
@@ -120,6 +121,7 @@ namespace Vendor_App.Controllers
                     }
                     else
                     {
+                        //if vendor not found
                         MessageBox.Show("Vendor not found");
                     }
                 }
@@ -144,6 +146,7 @@ namespace Vendor_App.Controllers
 
                 SqlCommand searchQuery = new SqlCommand("Update Vendor set Name=@Name, EstablishedAt=@EstablishedAt, Address=@Address, Country=@Country, City=@City, NoOfEmployees=@NoOfEmployees, IsInternational=@IsInternational, LastDemo=@LastDemo, LastReviewed=@LastReviewed, CompanyWebsite=@CompanyWebsite WHERE VendorID=@VendorID", conn);
 
+                //Inserting data to update vendor
                 searchQuery.Parameters.AddWithValue("VendorID", VendorID);
                 searchQuery.Parameters.AddWithValue("Name", Name);
                 searchQuery.Parameters.AddWithValue("EstablishedAt", EstablishedAt);
@@ -161,7 +164,9 @@ namespace Vendor_App.Controllers
 
 
                 MessageBox.Show("Vendor Updated!");
-                NotificationController.CreateNotification($"{VendorID} vendor was updated", DateTime.Now);
+
+                //Calling notification controller method once new vendor is updated
+                NotificationController.CreateNotification($"{Name.Trim()} vendor was updated", DateTime.Now);
 
                 conn.Close();
             }
@@ -188,7 +193,7 @@ namespace Vendor_App.Controllers
                     {
                         if (reader.Read())
                         {
-                            SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[Vendor] WHERE VendorID=@VendorID", con);
+                            SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[Vendor] WHERE VendorID=@VendorID", con); //checking vendor exists or not
 
                             deleteQuery.Parameters.AddWithValue("VendorID", vendorID);
 
@@ -206,7 +211,7 @@ namespace Vendor_App.Controllers
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("Something went wrong");
+                    MessageBox.Show("Something went wrong"); //exception handling
                 }
 
 
@@ -217,5 +222,6 @@ namespace Vendor_App.Controllers
             }
 
         }
+
     }
 }

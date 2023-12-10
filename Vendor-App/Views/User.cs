@@ -22,18 +22,15 @@ namespace Vendor_App.Views
             InitializeComponent();
         }
 
-
+        //Creating new user btn
         private void button1_Click(object sender, EventArgs e)
         {
             textBox4.UseSystemPasswordChar = true;
             UserController.CreateUser(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text, textBox5.Text);
         }
 
-        private void User_Load(object sender, EventArgs e)
-        {
 
-        }
-
+        //Show login page if user already regsitered in db
         private void button2_Click(object sender, EventArgs e)
         {
             Login login = new Login();

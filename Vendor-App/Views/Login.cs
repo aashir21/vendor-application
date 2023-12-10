@@ -19,6 +19,7 @@ namespace Vendor_App.Views
             
         }
 
+        //Show register page
         private void button2_Click(object sender, EventArgs e)
         {
             User user = new User();
@@ -26,6 +27,7 @@ namespace Vendor_App.Views
             this.Hide();
         }
 
+        //Used to login a user
         private void button1_Click(object sender, EventArgs e)
         {
             LoginController.LoginUser(textBox1.Text,textBox2.Text);

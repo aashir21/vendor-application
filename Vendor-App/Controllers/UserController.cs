@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//User Controller is responsible for the handling of user related activities
+// CreateUser() -- Will Register the new user, will check if a user already exists in db or not
+// ChangeAccessRights() -- An admin only function that can change access rights of a user, if already admin, it will abort
+// DeleteUser() -- Deletes user from the system
+
+using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vendor_App.Models;
-using Vendor_App.Views;
 
 namespace Vendor_App.Controllers
 {
@@ -14,7 +13,7 @@ namespace Vendor_App.Controllers
     {
 
         
-
+        //Register a new user to the system
         public static void CreateUser(string firstName, string lastName, string username, string password, string email)
         {
 
@@ -42,15 +41,16 @@ namespace Vendor_App.Controllers
 
                 if (firstName.Length < 3 || lastName.Length < 3)
                 {
-                    MessageBox.Show("First & Last name should be greater than 3 characters");
+                    MessageBox.Show("First & Last name should be greater than 3 characters"); //validating that first name & last name field should be at least 3 chars 
                     return;
                 }
                 
-                string[] splitStr = email.Split('@');
+                string[] splitStr = email.Split('@');  //splitting the email entered in textbox
 
-                if (splitStr[splitStr.Length - 1] != "citisoft.com")
-                {
-                    MessageBox.Show("You need a Citisoft email to register");
+                if (splitStr[splitStr.Length - 1] != "citisoft.com") // if the string split after the character `@` does not match - citisoft.com
+                {                                                   // A user cannot register
+
+                    MessageBox.Show("You need a Citisoft email to register"); //prompt will shown upon error
                     return;
                 }
 
@@ -58,7 +58,7 @@ namespace Vendor_App.Controllers
                 Models.User user = new Models.User(firstName,lastName,username,password,email,"USER");
 
 
-
+                //adding data from text fields into database
                 insertCommand.Parameters.AddWithValue("@FirstName", user.FirstName);
                 insertCommand.Parameters.AddWithValue("@LastName", user.LastName);
                 insertCommand.Parameters.AddWithValue("@Username", user.Username);
@@ -81,6 +81,7 @@ namespace Vendor_App.Controllers
 
         }
 
+        //Change access rights of a user
         public static void ChangeAccessRights(int UserID)
         {
 
@@ -99,7 +100,7 @@ namespace Vendor_App.Controllers
                     {
                         string role = reader["Role"].ToString();
 
-                        if (role.Trim() == "ADMIN")
+                        if (role.Trim() == "ADMIN")  //checking if logged in user is "ADMIN" or not
                         {
                             MessageBox.Show("User is already an admin");
                         }
@@ -108,7 +109,7 @@ namespace Vendor_App.Controllers
                             SqlCommand insertCommand = new SqlCommand("Update [User] SET Role=@Role WHERE UserID=@UserID", con);
                             insertCommand.Parameters.AddWithValue("Role", "ADMIN");
                             insertCommand.Parameters.AddWithValue("UserID", UserID);
-                            reader.Close();
+                            reader.Close();  //closing reader as two readers cannot work simultaneously 
                             insertCommand.ExecuteNonQuery();
 
                             MessageBox.Show("User Rights Changed");
@@ -118,7 +119,7 @@ namespace Vendor_App.Controllers
                     }
                     else
                     {
-                        MessageBox.Show($"Employee does not exist with ID: {UserID}");
+                        MessageBox.Show($"Employee does not exist with ID: {UserID}");  //handling if user not found
                     }
 
                     con.Close();
@@ -130,6 +131,7 @@ namespace Vendor_App.Controllers
         }
 
 
+        //Delete User Method
         public static void DeleteUser(int UserID)
         {
 
@@ -139,6 +141,7 @@ namespace Vendor_App.Controllers
 
                 con.Open();
 
+                //selecting user info that is mapped against an id
                 SqlCommand searchQuery = new SqlCommand("SELECT * FROM dbo.[User] WHERE UserID = @UserID", con);
                 searchQuery.Parameters.AddWithValue("@UserID", UserID);
 
@@ -146,7 +149,7 @@ namespace Vendor_App.Controllers
                 {
                     if (reader.Read())
                     {
-                        SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[User] WHERE UserID=@UserID", con);
+                        SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[User] WHERE UserID=@UserID", con);  //deleting a user when a correct userID is passed
 
                         deleteQuery.Parameters.AddWithValue("UserID", UserID);
 
@@ -154,7 +157,7 @@ namespace Vendor_App.Controllers
                         deleteQuery.ExecuteNonQuery();
                         
 
-                        MessageBox.Show("User deleted from system");
+                        MessageBox.Show("User deleted from system"); //showing correct output
                     }
                     else
                     {
@@ -180,18 +183,18 @@ namespace Vendor_App.Controllers
 
                 con.Open();
 
-                SqlCommand searchQuery = new SqlCommand("SELECT * FROM dbo.[User] WHERE UserID = @UserID", con);
+                SqlCommand searchQuery = new SqlCommand("SELECT * FROM dbo.[User] WHERE UserID = @UserID", con); //selecting user from table
                 searchQuery.Parameters.AddWithValue("@UserID", UserID);
 
                 using (SqlDataReader reader = searchQuery.ExecuteReader())
                 {
                     if (reader.Read())
                     {
-                        string[] User = new string[7];
+                        string[] User = new string[7]; //creating an array and to store columns from table in it
 
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            User[i] = reader[i].ToString();
+                            User[i] = reader[i].ToString(); //populating table from the table
                         } 
 
                         MessageBox.Show($"Vendor Details for: {User[1]} \n\n" +

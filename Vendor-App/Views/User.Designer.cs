@@ -174,7 +174,7 @@
             this.Controls.Add(this.label1);
             this.Name = "User";
             this.Text = "User";
-            this.Load += new System.EventHandler(this.User_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

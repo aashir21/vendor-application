@@ -65,7 +65,7 @@
             this.label1.Size = new System.Drawing.Size(173, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Edit Vendor";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // textBox1
             // 
@@ -307,7 +307,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditVendor";
             this.Text = "Edit Vendor";
-            this.Load += new System.EventHandler(this.EditVendor_Load);
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 

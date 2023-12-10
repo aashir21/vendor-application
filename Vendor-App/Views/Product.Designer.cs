@@ -236,6 +236,7 @@
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Name = "Product";
+            this.Load += new System.EventHandler(this.Product_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

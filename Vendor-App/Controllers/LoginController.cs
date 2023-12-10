@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+//Login Controller is used to handle login operations
+//LoginUser() -- Checks the credential of a user, does validations whether a user exists or not
+// if successfully logged in, vault class object is initialised to store user data, 
+
+using System;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vendor_App.Models;
 using Vendor_App.Utility;
-using Vendor_App.Views;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Vendor_App.Controllers
 {
@@ -60,7 +55,7 @@ namespace Vendor_App.Controllers
                             {
                                 string role = reader["Role"].ToString(); // Read the role from the 'Role' column
 
-                                Vault.CurrentUser = new UserInfo { Username = username, Role = role };
+                                Vault.CurrentUser = new UserInfo { Username = username, Role = role };  //initialise the vault class and intialise user info
 
                                 Form1 form1 = new Form1();
                                 form1.Show();
@@ -80,7 +75,7 @@ namespace Vendor_App.Controllers
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);  //exception handling
             }
         }
 

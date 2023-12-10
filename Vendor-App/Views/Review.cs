@@ -20,6 +20,8 @@ namespace Vendor_App.Views
         }
 
 
+
+        //Return to home page btn
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
@@ -31,7 +33,15 @@ namespace Vendor_App.Views
         //Add Review Method
         private void button2_Click(object sender, EventArgs e)
         {
-            ReviewController.AddNewReview(int.Parse(textBox2.Text), int.Parse(textBox3.Text), textBox4.Text, int.Parse(textBox5.Text));
+            try
+            {
+                ReviewController.AddNewReview(int.Parse(textBox2.Text), int.Parse(textBox3.Text), textBox4.Text, int.Parse(textBox5.Text));
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
 
 

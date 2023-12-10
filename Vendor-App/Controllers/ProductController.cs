@@ -1,15 +1,9 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data;
+﻿
+
+using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Vendor_App.Models;
-using Vendor_App.Views;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace Vendor_App.Controllers
 {
@@ -49,7 +43,7 @@ namespace Vendor_App.Controllers
 
                 cmd.ExecuteNonQuery();
 
-                // Close SQL datbase connection.
+                // Close SQL database connection.
 
                 conn.Close();
 
@@ -132,21 +126,39 @@ namespace Vendor_App.Controllers
 
                 //SQL query to delete product.
 
-                SqlCommand cmd = new SqlCommand("Delete Product WHERE ProductID=@ProductID", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM [Product] WHERE ProductID=@ProductID", conn);
 
                 cmd.Parameters.AddWithValue("@ProductID", ProductID);
 
                 // SQL method used when query doesn't show any results. Best for the UPDATE purpose.
 
-                cmd.ExecuteNonQuery();
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        SqlCommand deleteQuery = new SqlCommand("DELETE dbo.[Product] WHERE ProductID=@ProductID", conn);
+
+                        deleteQuery.Parameters.AddWithValue("ProductID", ProductID);
+
+                        reader.Close();
+                        deleteQuery.ExecuteNonQuery();
+
+                        // Display message in pop-up window
+                        MessageBox.Show("Product deleted from system");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Product Not Found.");
+                    }
+                }
 
                 // Close connection.
 
                 conn.Close();
 
-                // Display message in pop-up window.
+                
 
-                MessageBox.Show("Product Deleted.");
+                
             }
 
             catch (Exception e)

@@ -37,10 +37,10 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,7 +96,7 @@
             this.label1.Size = new System.Drawing.Size(70, 29);
             this.label1.TabIndex = 5;
             this.label1.Text = "Hello";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // button5
             // 
@@ -117,7 +117,7 @@
             this.label2.Size = new System.Drawing.Size(332, 31);
             this.label2.TabIndex = 7;
             this.label2.Text = "Upload Files For A Vendor";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            
             // 
             // button6
             // 
@@ -129,23 +129,15 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(17, 229);
-            this.textBox1.MinimumSize = new System.Drawing.Size(309, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(309, 22);
-            this.textBox1.TabIndex = 9;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Green;
             this.label3.Location = new System.Drawing.Point(16, 201);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(281, 16);
+            this.label3.Size = new System.Drawing.Size(193, 16);
             this.label3.TabIndex = 10;
-            this.label3.Text = "For file uploading, please provide a Vendor ID";
+            this.label3.Text = "Select a Vendor to upload a file";
             // 
             // dataGridView1
             // 
@@ -156,7 +148,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(301, 388);
             this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            
             // 
             // label4
             // 
@@ -168,15 +160,24 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Notifications";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(19, 237);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(278, 24);
+            this.comboBox1.TabIndex = 13;
+            
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(796, 640);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
@@ -205,10 +206,10 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

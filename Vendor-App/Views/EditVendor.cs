@@ -22,16 +22,6 @@ namespace Vendor_App.Views
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EditVendor_Load(object sender, EventArgs e)
-        {
-
-            
-        }
 
         private void button2_Click(object sender, EventArgs e)  // Button used to fetch existing data from db and populate fields
         {
@@ -75,6 +65,7 @@ namespace Vendor_App.Views
             }
         }
 
+        //Back button to go back to Home Page
         private void button3_Click(object sender, EventArgs e)
         {
             Form1 form = new Form1();
@@ -82,6 +73,7 @@ namespace Vendor_App.Views
             this.Hide();
         }
 
+        //Event handler to update a vendor info
         private void button1_Click(object sender, EventArgs e)
         {
 

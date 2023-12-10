@@ -42,6 +42,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(35, 363);
+            this.button1.Location = new System.Drawing.Point(41, 30);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 57);
             this.button1.TabIndex = 1;
@@ -107,7 +110,6 @@
             this.label2.Size = new System.Drawing.Size(91, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Vendor Name";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -164,7 +166,6 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(156, 22);
             this.textBox4.TabIndex = 12;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label5
             // 
@@ -175,11 +176,33 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Search / Delete By Id";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(41, 463);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(710, 217);
+            this.dataGridView1.TabIndex = 14;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(632, 353);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(119, 56);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "View All Vendors";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Vendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 710);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.button5);
@@ -197,6 +220,7 @@
             this.Name = "Vendor";
             this.Text = "Vendor";
             this.Load += new System.EventHandler(this.Vendor_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +242,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button6;
     }
 }
